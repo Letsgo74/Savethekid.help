@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Relief Initiative - Support War Victims</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('war-victims-bg.jpg');
+            background-size: cover;
+            color: white;
+            padding: 120px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .donate-btn {
+            background: #e63946;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-3px);
+            background: #d62828;
+        }
+
+        .urgent-appeal {
+            background: #fff3f4;
+            padding: 30px 0;
+            border-top: 3px solid #e63946;
+            border-bottom: 3px solid #e63946;
+        }
+
+        .impact-number {
+            font-size: 2.5rem;
+            color: #e63946;
+            font-weight: bold;
+        }
+
+        .cause-card {
+            transition: transform 0.3s ease;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .cause-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .donation-option {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .donation-option:hover {
+            background: #e63946;
+            color: white;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.svg" alt="Hope United" style="height: 40px;">
+                Hope United
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#impact">Impact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stories">Stories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#donate">Donate</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 mb-4">When Home Becomes a Battlefield</h1>
+            <p class="lead mb-4">"In the rubble of destroyed cities, your compassion can be the light that guides families back to safety."</p>
+            <button class="donate-btn" onclick="scrollToDonate()">Be Their Hope Today</button>
+        </div>
+    </section>
+
+    <!-- Emotional Appeal -->
+    <section class="urgent-appeal">
+        <div class="container text-center">
+            <div class="row align-items-center">
+                <div class="col-md-2">
+                    <img src="child-icon.svg" alt="Child in need" style="height: 100px;">
+                </div>
+                <div class="col-md-10">
+                    <h3 class="mb-3">Every 60 Seconds, a Family Loses Everything</h3>
+                    <p class="mb-0">While you read this, a child is searching for parents in the rubble. A mother is choosing between medicine and food. 
+                    <strong>Your $2 can provide:</strong> A warm meal • Clean water for a day • Emergency medical supplies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donate" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>Restore Hope With Your Gift</h2>
+                <p class="lead">Select your impact level:</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <!-- Donation Options -->
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-6 col-md-3">
+                            <div class="donation-option" data-amount="2">
+                                <div class="impact-number">$2</div>
+                                <small>Emergency Water</small>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="donation-option" data-amount="5">
+                                <div class="impact-number">$5</div>
+                                <small>Warm Blanket</small>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="donation-option" data-amount="10">
+                                <div class="impact-number">$10</div>
+                                <small>Food Package</small>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="donation-option" data-amount="25">
+                                <div class="impact-number">$25</div>
+                                <small>Medical Kit</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Amount -->
+                    <div class="mt-4 text-center">
+                        <p class="text-muted">Or enter custom amount ($2 minimum):</p>
+                        <div class="input-group mb-3 w-50 mx-auto">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" id="customAmount" min="2" step="1" value="10">
+                        </div>
+                    </div>
+
+                    <!-- Payment Options -->
+                    <div class="text-center mt-4">
+                        <button class="btn btn-danger btn-lg px-5" onclick="handleDonation()">
+                            Give Security Now
+                        </button>
+                        <div id="paypal-button-container" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="py-5">
+        <div class="container text-center">
+            <h2 class="mb-5">Your Generosity in Action</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <img src="mother-icon.svg" alt="Mother" class="mb-3" style="height: 60px;">
+                        <blockquote>
+                            "The food packages arrived when we hadn't eaten for two days. You saved my children's lives."
+                            <footer class="mt-2 text-muted">- Olena, Kharkiv</footer>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <img src="medical-icon.svg" alt="Medical" class="mb-3" style="height: 60px;">
+                        <blockquote>
+                            "Your donations equipped our mobile clinic to treat 200+ wounded last month."
+                            <footer class="mt-2 text-muted">- Dr. Ivan, Lviv</footer>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <img src="child-icon.svg" alt="Child" class="mb-3" style="height: 60px;">
+                        <blockquote>
+                            "Because of you, I have a warm bed and books to continue learning."
+                            <footer class="mt-2 text-muted">- Mykola, 9 years old</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>"In the end, we will remember not the words of our enemies, but the silence of those who could help." - Martin Luther King Jr.</p>
+            <p>© 2025 Hope United | 501(c)(3) Charity | EIN: 12-3456789</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
+    <script>
+        // Handle donation interactions
+        document.querySelectorAll('.donation-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const amount = this.dataset.amount;
+                document.getElementById('customAmount').value = amount;
+            });
+        });
+
+        function handleDonation() {
+            const amount = document.getElementById('customAmount').value;
+            if (amount < 2) {
+                alert("Minimum donation is $2. Every dollar makes a difference!");
+                return;
+            }
+            // Process donation
+            alert(`Thank you for your generous $${amount} donation! Redirecting to secure payment...`);
+        }
+
+        // Initialize PayPal
+        paypal.Buttons({
+            style: {
+                shape: 'pill',
+                color: 'gold',
+                layout: 'horizontal',
+                label: 'donate'
+            },
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: document.getElementById('customAmount').value
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Transaction completed by ' + details.payer.name.given_name);
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html>
